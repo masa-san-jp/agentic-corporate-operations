@@ -1,0 +1,85 @@
+schema_version: 0.1.0
+status: draft
+source_issue: 10
+change_classes:
+  - id: C0
+    name: editorial
+    description: 誤字、リンク、書式など意味を変えない変更
+    requires_rfc: false
+    requires_adr: false
+    required_reviews:
+      - structural-validator
+    human_approval: false
+    migration_required: false
+
+  - id: C1
+    name: clarification
+    description: 規範的意味を変えない明確化、例、説明の追加
+    requires_rfc: false
+    requires_adr: false
+    required_reviews:
+      - consistency-reviewer
+    human_approval: false
+    migration_required: false
+
+  - id: C2
+    name: lower-level-compatible
+    description: 上位仕様に従う下位仕様、テンプレート、非破壊的Schema追加
+    requires_rfc: false
+    requires_adr: false
+    required_reviews:
+      - consistency-reviewer
+      - integration-agent
+    human_approval: false
+    migration_required: false
+
+  - id: C3
+    name: shared-model-or-protocol
+    description: 共通モデル、共通Protocol、共有Schema、横断統制を変更する
+    requires_rfc: true
+    requires_adr: true
+    required_reviews:
+      - challenger
+      - control-reviewer
+      - integration-agent
+      - chief-architect
+    human_approval: false
+    migration_required: true
+
+  - id: C4
+    name: constitutional-or-responsibility
+    description: L0/L1、不変条件、人間とAIの責任境界、権限原則を変更する
+    requires_rfc: true
+    requires_adr: true
+    required_reviews:
+      - challenger
+      - control-reviewer
+      - integration-agent
+      - chief-architect
+      - human-governor
+    human_approval: true
+    migration_required: true
+
+  - id: C5
+    name: legal-ethical-or-critical-risk
+    description: 法的、倫理的、生命、重大権利、重大な事業継続リスクに関わる変更
+    requires_rfc: true
+    requires_adr: true
+    required_reviews:
+      - challenger
+      - control-reviewer
+      - integration-agent
+      - chief-architect
+      - human-governor
+      - designated-specialist
+    human_approval: true
+    specialist_review: true
+    migration_required: true
+
+classification_rules:
+  - rule: 変更が上位文書の規範的意味を変える場合はC4以上とする
+  - rule: 複数領域が共有するSchemaまたはProtocolを変える場合はC3以上とする
+  - rule: 互換性を失う変更はC3以上とする
+  - rule: 法的義務、個人の権利、外部送信、金銭、雇用上の重大判断に影響する場合はC5候補として評価する
+  - rule: 変更クラスに迷う場合は高い方を採用し、レビューで引き下げる
+  - rule: Authorは自分の変更クラスを単独で引き下げてはならない
