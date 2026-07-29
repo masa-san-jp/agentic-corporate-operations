@@ -1,0 +1,99 @@
+name: Document specification
+description: 仕様書・プロトコル・スキーマ・テンプレートの作成または変更
+title: "[Spec] "
+labels:
+  - documentation
+body:
+  - type: input
+    id: path
+    attributes:
+      label: 成果物パス
+      description: 作成または変更するリポジトリ内のパス
+      placeholder: docs/01-architecture/work-object-model.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 解決する問題
+      description: 現状の欠落、矛盾、実装不能点を記載する
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 目的
+      description: この成果物によって可能になる判断、実装、検証を記載する
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 対象・非対象
+      value: |
+        ## 対象
+        -
+
+        ## 非対象
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 親文書・依存関係
+      description: 親文書、依存Issue、関連ADR、関連スキーマを列挙する
+      placeholder: |
+        - Parent: docs/00-overview/principles.md
+        - Depends on: #123
+        - Related ADR: decisions/ADR-0001-example.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: sections
+    attributes:
+      label: 必須セクション
+      value: |
+        - 目的
+        - 適用範囲
+        - 入力・出力
+        - 主体・責任・権限
+        - 状態遷移または処理手順
+        - 正常系
+        - 例外系
+        - 証跡
+        - 完了条件
+        - テスト
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      description: 第三者またはValidatorがYes/Noで判定できる条件を列挙する
+      placeholder: |
+        - [ ] 必須属性が定義されている
+        - [ ] 正常例と異常例がある
+        - [ ] 関連スキーマで検証できる
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: 検証方法
+      description: レビュー、Schema Validation、リンク検査、シナリオテスト等を記載する
+    validations:
+      required: true
+
+  - type: textarea
+    id: open_questions
+    attributes:
+      label: 未決事項
+      description: 本Issue内で決めない事項を明示する
