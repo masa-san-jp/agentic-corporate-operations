@@ -1,0 +1,118 @@
+schema_version: 0.1.0
+status: draft
+source_issue: 13
+approval_matrix:
+  C0:
+    required_roles:
+      - structural-validator
+    minimum_independent_approvals: 0
+    required_checks:
+      - syntax
+      - links
+    merge_authority:
+      - release-manager
+
+  C1:
+    required_roles:
+      - consistency-reviewer
+    minimum_independent_approvals: 1
+    required_checks:
+      - syntax
+      - structure
+      - terminology
+      - links
+    merge_authority:
+      - release-manager
+
+  C2:
+    required_roles:
+      - consistency-reviewer
+      - integration-agent
+    minimum_independent_approvals: 1
+    required_checks:
+      - syntax
+      - structure
+      - traceability
+      - schema
+      - examples
+      - regression
+    merge_authority:
+      - integration-agent
+      - release-manager
+
+  C3:
+    required_roles:
+      - challenger
+      - control-reviewer
+      - integration-agent
+      - chief-architect
+    minimum_independent_approvals: 2
+    required_checks:
+      - accepted-rfc
+      - accepted-adr
+      - syntax
+      - structure
+      - traceability
+      - invariants
+      - schema
+      - semantic-consistency
+      - golden-scenarios
+      - migration
+      - rollback
+    merge_authority:
+      - chief-architect
+      - release-manager
+
+  C4:
+    required_roles:
+      - challenger
+      - control-reviewer
+      - integration-agent
+      - chief-architect
+      - human-governor
+    minimum_independent_approvals: 3
+    required_checks:
+      - accepted-rfc
+      - accepted-adr
+      - human-decision-record
+      - impact-analysis
+      - invariants
+      - semantic-consistency
+      - golden-scenarios
+      - migration
+      - rollback
+    merge_authority:
+      - human-governor
+      - release-manager
+
+  C5:
+    required_roles:
+      - challenger
+      - control-reviewer
+      - integration-agent
+      - chief-architect
+      - human-governor
+      - designated-specialist
+    minimum_independent_approvals: 4
+    required_checks:
+      - accepted-rfc
+      - accepted-adr
+      - human-decision-record
+      - specialist-opinion
+      - legal-ethical-impact-analysis
+      - invariants
+      - semantic-consistency
+      - golden-scenarios
+      - migration
+      - rollback
+    merge_authority:
+      - human-governor
+      - release-manager
+
+common_rules:
+  - Authorは独立承認数に算入しない
+  - ReviewerとAuthorが同一agent_run_idであってはならない
+  - base branch更新後は影響を受ける承認を再確認する
+  - 未解決レビュー会話がある場合はREADY_TO_MERGEへ遷移しない
+  - 必須チェックの免除は期限付きEmergency Change Recordを必要とする
+  - 緊急変更は事後レビュー完了までRELEASED扱いにしない
