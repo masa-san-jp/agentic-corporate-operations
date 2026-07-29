@@ -1,0 +1,27 @@
+handoff_id:
+work_package_id:
+from_agent_run_id:
+to_role:
+created_at:
+base_commit:
+current_branch:
+context_bundle_id:
+status_at_handoff:
+completed_steps: []
+pending_steps: []
+modified_files: []
+decisions_made: []
+evidence_refs: []
+unresolved_conflicts: []
+failed_attempts:
+  - attempt:
+    failure:
+    evidence:
+    retry_recommended: false
+known_risks: []
+recommended_next_action:
+required_revalidation: []
+lease_release:
+  released_at:
+  safe_to_take_over: false
+closure_condition:
