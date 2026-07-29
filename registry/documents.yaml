@@ -1,0 +1,157 @@
+schema_version: 0.1.0
+status: draft
+source_issue: 11
+documents:
+  - document_id: ACO-CONST-VISION-001
+    path: docs/00-overview/vision.md
+    title: Vision
+    normative_level: L0
+    status: draft
+    version: 0.1.0
+    owner_role: human-governor
+    parent_documents: []
+    depends_on: []
+    applicable_invariants:
+      - INV-001
+    source_issue: null
+
+  - document_id: ACO-CONST-SCOPE-001
+    path: docs/00-overview/scope.md
+    title: Scope
+    normative_level: L0
+    status: draft
+    version: 0.1.0
+    owner_role: human-governor
+    parent_documents:
+      - ACO-CONST-VISION-001
+    depends_on:
+      - ACO-CONST-VISION-001
+    applicable_invariants:
+      - INV-001
+    source_issue: null
+
+  - document_id: ACO-CONST-PRINCIPLES-001
+    path: docs/00-overview/principles.md
+    title: Design Principles
+    normative_level: L0
+    status: draft
+    version: 0.1.0
+    owner_role: human-governor
+    parent_documents:
+      - ACO-CONST-VISION-001
+      - ACO-CONST-SCOPE-001
+    depends_on:
+      - ACO-CONST-VISION-001
+      - ACO-CONST-SCOPE-001
+    applicable_invariants:
+      - INV-001
+      - INV-002
+      - INV-003
+      - INV-004
+      - INV-006
+    source_issue: null
+
+  - document_id: ACO-CONST-GLOSSARY-001
+    path: docs/00-overview/glossary.md
+    title: Glossary
+    normative_level: L0
+    status: draft
+    version: 0.1.0
+    owner_role: chief-architect
+    parent_documents:
+      - ACO-CONST-PRINCIPLES-001
+    depends_on:
+      - ACO-CONST-PRINCIPLES-001
+    applicable_invariants:
+      - INV-001
+    source_issue: null
+
+  - document_id: ACO-ARCH-DOC-001
+    path: docs/01-architecture/document-architecture.md
+    title: Document Architecture
+    normative_level: L1
+    status: draft
+    version: 0.2.0
+    owner_role: chief-architect
+    parent_documents:
+      - ACO-CONST-PRINCIPLES-001
+    depends_on:
+      - ACO-CONST-PRINCIPLES-001
+      - ACO-CONST-GLOSSARY-001
+    applicable_invariants:
+      - INV-001
+      - INV-004
+      - INV-005
+      - INV-008
+    source_issue: 9
+
+  - document_id: ACO-ROADMAP-001
+    path: docs/12-roadmap/document-roadmap.md
+    title: Document Roadmap
+    normative_level: L1
+    status: draft
+    version: 0.2.0
+    owner_role: chief-architect
+    parent_documents:
+      - ACO-ARCH-DOC-001
+    depends_on:
+      - ACO-ARCH-DOC-001
+    applicable_invariants:
+      - INV-001
+      - INV-005
+    source_issue: 9
+
+  - document_id: ACO-ROADMAP-PHASE-000
+    path: docs/12-roadmap/phase-0-multi-agent-repository-foundation.md
+    title: Phase 0 Multi-Agent Repository Foundation
+    normative_level: L1
+    status: draft
+    version: 0.1.0
+    owner_role: human-governor
+    parent_documents:
+      - ACO-ARCH-DOC-001
+      - ACO-ROADMAP-001
+    depends_on:
+      - ACO-ARCH-DOC-001
+      - ACO-ROADMAP-001
+    applicable_invariants:
+      - INV-001
+      - INV-002
+      - INV-003
+      - INV-004
+      - INV-005
+      - INV-006
+      - INV-007
+      - INV-008
+    source_issue: 9
+
+  - document_id: ACO-AGENT-INSTRUCTIONS-001
+    path: AGENTS.md
+    title: AI Agent Repository Instructions
+    normative_level: repository-governance
+    status: draft
+    version: 0.2.0
+    owner_role: chief-architect
+    parent_documents:
+      - ACO-ROADMAP-PHASE-000
+    depends_on:
+      - ACO-CONST-PRINCIPLES-001
+      - ACO-ARCH-DOC-001
+      - ACO-ROADMAP-PHASE-000
+    applicable_invariants:
+      - INV-001
+      - INV-003
+      - INV-004
+      - INV-005
+      - INV-006
+      - INV-007
+      - INV-008
+    source_issue: 9
+
+registry_rules:
+  document_id_unique: true
+  path_unique: true
+  dependency_graph_must_be_acyclic: true
+  approved_requires_approved_dependencies: true
+  new_dependency_on_deprecated_forbidden: true
+  missing_parent_forbidden: true
