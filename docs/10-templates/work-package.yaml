@@ -1,0 +1,33 @@
+work_package_id:
+source_issue:
+status: PROPOSED
+change_class:
+base_commit:
+objective:
+deliverables: []
+required_context: []
+applicable_invariants: []
+related_adrs: []
+dependencies: []
+editable_paths: []
+read_only_paths: []
+forbidden_paths: []
+assigned_role:
+reviewer_roles: []
+tools_allowed: []
+external_access_allowed: false
+acceptance_criteria: []
+acceptance_tests: []
+max_iterations:
+timeout_at:
+lease:
+  holder_agent_run_id:
+  acquired_at:
+  expires_at:
+exception_policy:
+  retry_limit:
+  escalation_role:
+  escalation_deadline:
+  closure_condition:
+handoff_required: true
+completion_authority:
