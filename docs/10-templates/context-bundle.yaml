@@ -1,0 +1,25 @@
+context_bundle_id:
+work_package_id:
+base_commit:
+generated_at:
+generated_by:
+required_documents:
+  - document_id:
+    path:
+    version:
+    blob_sha:
+applicable_invariants: []
+applicable_change_class:
+applicable_adrs: []
+glossary_terms: []
+related_schemas: []
+known_conflicts: []
+open_questions: []
+prohibited_assumptions: []
+source_materials:
+  normative: []
+  non_normative: []
+staleness_policy:
+  invalidate_on_parent_change: true
+  invalidate_on_invariant_change: true
+  require_rebase_before_review: true
