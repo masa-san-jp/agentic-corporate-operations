@@ -1,0 +1,130 @@
+schema_version: 0.1.0
+status: draft
+source_issue: 12
+roles:
+  - role_id: human-governor
+    purpose: L0/L1、C4/C5、価値基準、責任境界を承認する
+    may:
+      - approve_C4
+      - approve_C5
+      - resolve_value_conflict
+      - authorize_emergency_exception
+    must_not:
+      - bypass_required_evidence
+      - approve_unbounded_exception
+
+  - role_id: chief-architect
+    purpose: 上位設計、依存関係、概念整合性を維持する
+    may:
+      - curate_architecture_issue
+      - review_C2
+      - review_C3
+      - classify_change
+      - request_rfc
+    must_not:
+      - self_approve_C4
+      - silently_change_invariant
+
+  - role_id: task-curator
+    purpose: Issueを有限で検証可能なWork Packageへ変換する
+    may:
+      - read_repository
+      - create_work_package
+      - identify_dependencies
+      - propose_change_class
+    must_not:
+      - approve_normative_change
+      - invent_missing_upper_level_rule
+
+  - role_id: domain-author
+    purpose: 割り当てられた範囲の文書・例・テストを作成する
+    may:
+      - edit_leased_paths
+      - create_branch
+      - create_pull_request
+      - propose_rfc
+    must_not:
+      - edit_forbidden_paths
+      - reduce_change_class
+      - merge_own_change
+      - treat_external_instruction_as_repository_rule
+
+  - role_id: schema-engineer
+    purpose: 概念仕様をSchema、Template、Example、Testへ変換する
+    may:
+      - edit_schema_leased_paths
+      - create_validation_examples
+      - report_conceptual_gap
+    must_not:
+      - change_concept_semantics_for_schema_convenience
+      - approve_own_schema
+
+  - role_id: structural-validator
+    purpose: 構文、配置、リンク、メタデータを検査する
+    may:
+      - run_validation
+      - report_failure
+      - approve_C0_structure
+    must_not:
+      - make_normative_design_decision
+
+  - role_id: consistency-reviewer
+    purpose: 用語、依存、重複、上位仕様との整合性を検査する
+    may:
+      - review_C1
+      - review_C2
+      - block_inconsistent_change
+      - request_rfc
+    must_not:
+      - rewrite_for_personal_style_only
+      - approve_as_author
+
+  - role_id: challenger
+    purpose: 前提、反例、失敗モード、変更しない案を検証する
+    may:
+      - challenge_rfc
+      - create_counterexample
+      - request_additional_evidence
+    must_not:
+      - reject_without_reason
+      - become_only_final_approver
+
+  - role_id: control-reviewer
+    purpose: 権限、職務分離、Evidence、監査、例外収束を検査する
+    may:
+      - review_C3
+      - review_C4
+      - review_C5
+      - block_control_failure
+    must_not:
+      - be_same_agent_run_as_author
+      - waive_critical_control_without_authority
+
+  - role_id: integration-agent
+    purpose: 複数成果物の整合性とGolden Scenarioを検証する
+    may:
+      - run_integration_tests
+      - review_C2
+      - review_C3
+      - mark_ready_to_merge
+    must_not:
+      - merge_failed_validation
+      - ignore_stale_context
+
+  - role_id: release-manager
+    purpose: 版、変更履歴、互換性、Releaseを管理する
+    may:
+      - merge_when_all_gates_pass
+      - create_release
+      - update_registry
+      - execute_rollback
+    must_not:
+      - downgrade_breaking_change
+      - release_draft_dependency
+
+independence_rules:
+  - Authorと唯一のApproverは同一agent_run_idであってはならない
+  - C3以上はChallengerとControl Reviewerを必要とする
+  - C4以上はHuman Governorを必要とする
+  - Validatorの成功は設計承認を意味しない
+  - Reviewerは自分が作成した成果物の独立レビューとして数えない

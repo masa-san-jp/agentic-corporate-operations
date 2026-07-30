@@ -1,5 +1,5 @@
 name: Document specification
-description: 仕様書・プロトコル・スキーマ・テンプレートの作成または変更
+description: 仕様書・Protocol・Schema・Templateの作成または変更
 title: "[Spec] "
 labels:
   - documentation
@@ -42,15 +42,101 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: change_class
+    attributes:
+      label: 変更クラス
+      description: governance/change-classes.yamlに基づく暫定分類。判断が難しい場合は高い方を選ぶ。
+      options:
+        - C0 - Editorial
+        - C1 - Clarification
+        - C2 - Lower-level compatible
+        - C3 - Shared model or protocol
+        - C4 - Constitutional or responsibility boundary
+        - C5 - Legal, ethical, or critical risk
+    validations:
+      required: true
+
+  - type: textarea
+    id: invariants
+    attributes:
+      label: 適用不変条件
+      description: governance/invariants.yamlのIDと、この変更への適用理由を記載する
+      placeholder: |
+        - INV-001: 上位仕様との整合性
+        - INV-003: AuthorとApproverの分離
+    validations:
+      required: true
+
+  - type: dropdown
+    id: assigned_role
+    attributes:
+      label: 担当Agent Role
+      description: orchestration/agent-roles.yamlに基づく主担当
+      options:
+        - task-curator
+        - domain-author
+        - schema-engineer
+        - structural-validator
+        - consistency-reviewer
+        - challenger
+        - control-reviewer
+        - integration-agent
+        - chief-architect
+        - release-manager
+        - human-governor
+    validations:
+      required: true
+
+  - type: textarea
+    id: reviewers
+    attributes:
+      label: 必須Reviewer Role
+      description: governance/approval-matrix.yamlに基づいて列挙する
+      placeholder: |
+        - consistency-reviewer
+        - integration-agent
+    validations:
+      required: true
+
   - type: textarea
     id: dependencies
     attributes:
       label: 親文書・依存関係
-      description: 親文書、依存Issue、関連ADR、関連スキーマを列挙する
+      description: 親文書、依存Issue、関連RFC、ADR、Schemaを列挙する
       placeholder: |
         - Parent: docs/00-overview/principles.md
         - Depends on: #123
+        - Related RFC: proposals/RFC-0001-example.md
         - Related ADR: decisions/ADR-0001-example.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context Bundle生成条件
+      description: base commit、必読文書、既知の競合、禁止する前提を記載する。Phase 0中は案でよい。
+      placeholder: |
+        - Base branch: main
+        - Required documents: AGENTS.md, governance/invariants.yaml
+        - Prohibited assumptions: 未承認RFCを規範として扱わない
+    validations:
+      required: true
+
+  - type: textarea
+    id: paths
+    attributes:
+      label: 編集範囲
+      value: |
+        ## Editable paths
+        -
+
+        ## Read-only paths
+        -
+
+        ## Forbidden paths
+        -
     validations:
       required: true
 
@@ -59,6 +145,7 @@ body:
     attributes:
       label: 必須セクション
       value: |
+        - 必須メタデータ
         - 目的
         - 適用範囲
         - 入力・出力
@@ -66,9 +153,10 @@ body:
         - 状態遷移または処理手順
         - 正常系
         - 例外系
-        - 証跡
+        - Evidence
         - 完了条件
         - テスト
+        - 移行・ロールバック
     validations:
       required: true
 
@@ -80,7 +168,8 @@ body:
       placeholder: |
         - [ ] 必須属性が定義されている
         - [ ] 正常例と異常例がある
-        - [ ] 関連スキーマで検証できる
+        - [ ] 関連Schemaで検証できる
+        - [ ] Document Registryが更新されている
     validations:
       required: true
 
@@ -88,7 +177,18 @@ body:
     id: validation
     attributes:
       label: 検証方法
-      description: レビュー、Schema Validation、リンク検査、シナリオテスト等を記載する
+      description: Review、Schema Validation、Link、Invariant、Golden Scenario等を記載する
+    validations:
+      required: true
+
+  - type: textarea
+    id: improvement
+    attributes:
+      label: 改善提案の扱い
+      description: Work Package内で扱う改善と、RFCへ分離する改善の境界を記載する
+      placeholder: |
+        - C0〜C2: 本Issue内
+        - C3以上: RFCへ分離
     validations:
       required: true
 

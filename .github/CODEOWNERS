@@ -1,0 +1,19 @@
+# Initial ownership. Replace or extend these entries when additional human maintainers are appointed.
+
+* @masa-san-jp
+
+# Constitutional and reference architecture
+/docs/00-overview/ @masa-san-jp
+/docs/01-architecture/ @masa-san-jp
+/governance/ @masa-san-jp
+
+# Machine-readable normative artifacts
+/schemas/ @masa-san-jp
+/registry/ @masa-san-jp
+/orchestration/ @masa-san-jp
+
+# Repository controls
+/.github/ @masa-san-jp
+/validation/ @masa-san-jp
+/decisions/ @masa-san-jp
+/proposals/ @masa-san-jp

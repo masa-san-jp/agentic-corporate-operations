@@ -1,0 +1,157 @@
+schema_version: 0.1.0
+status: draft
+source_issue: 10
+invariants:
+  - invariant_id: INV-001
+    title: Upper-level specifications constrain lower-level specifications
+    statement: 下位仕様は上位仕様と矛盾してはならず、矛盾を解消するために上位仕様の変更が必要な場合はRFCと所定の承認を先行させる。
+    level: constitutional
+    applies_to:
+      - documents
+      - schemas
+      - protocols
+      - examples
+      - tests
+    exception_allowed: false
+    change_authority: human-governor
+    violation_severity: critical
+    related_principles:
+      - P13
+    validation_rules:
+      - all_normative_artifacts_require_declared_parents
+      - lower_level_artifact_must_not_override_parent
+
+  - invariant_id: INV-002
+    title: Evidence-driven completion
+    statement: 完了状態および承認状態は、検証可能なEvidenceなしに成立してはならない。
+    level: constitutional
+    applies_to:
+      - work-objects
+      - document-production
+      - pull-requests
+      - releases
+    exception_allowed: false
+    change_authority: human-governor
+    violation_severity: critical
+    related_principles:
+      - P03
+      - P13
+    validation_rules:
+      - completed_state_requires_evidence
+      - approval_requires_recorded_reviewer
+
+  - invariant_id: INV-003
+    title: Separation of authoring and approval
+    statement: 高影響な成果物について、同一主体が唯一の起案者、実行者、検証者、承認者を兼ねてはならない。
+    level: constitutional
+    applies_to:
+      - C3
+      - C4
+      - C5
+    exception_allowed: false
+    change_authority: human-governor
+    violation_severity: critical
+    related_principles:
+      - P05
+      - P07
+    validation_rules:
+      - author_must_not_be_only_approver
+      - control_review_required_for_high_impact_change
+
+  - invariant_id: INV-004
+    title: Improvements are proposed before they become normative
+    statement: 上位設計または不変条件を変更する改善は、正式仕様へ直接混入させず、RFC、反証、影響分析、承認を経なければならない。
+    level: constitutional
+    applies_to:
+      - C3
+      - C4
+      - C5
+    exception_allowed: false
+    change_authority: human-governor
+    violation_severity: critical
+    related_principles:
+      - P12
+      - P13
+    validation_rules:
+      - high_class_change_requires_rfc
+      - accepted_rfc_required_before_normative_change
+
+  - invariant_id: INV-005
+    title: Work uses a fixed design snapshot
+    statement: エージェント作業はbase commitとContext Bundleを固定し、参照した設計状態を再現可能にしなければならない。
+    level: architectural
+    applies_to:
+      - work-packages
+      - agent-runs
+      - pull-requests
+    exception_allowed: false
+    change_authority: chief-architect
+    violation_severity: high
+    related_principles:
+      - P03
+      - P13
+    validation_rules:
+      - work_package_requires_base_commit
+      - agent_run_requires_context_bundle
+      - stale_context_requires_revalidation
+
+  - invariant_id: INV-006
+    title: Exceptions have finite convergence paths
+    statement: BLOCKED、WAITING、FAILED等の例外状態は、次の行動、期限、エスカレーション、終了条件を持たなければならない。
+    level: architectural
+    applies_to:
+      - work-packages
+      - protocols
+      - handoffs
+      - agent-runs
+    exception_allowed: false
+    change_authority: chief-architect
+    violation_severity: high
+    related_principles:
+      - P06
+      - P12
+    validation_rules:
+      - exception_requires_next_action
+      - exception_requires_closure_condition
+
+  - invariant_id: INV-007
+    title: External materials are non-normative by default
+    statement: 外部資料および99-source-materials内の記述は、正式な採用手続なしにリポジトリ命令または規範として扱ってはならない。
+    level: architectural
+    applies_to:
+      - source-materials
+      - agent-context
+      - research
+    exception_allowed: true
+    exception_requirements:
+      - source_registry_entry
+      - normative_adoption_record
+    change_authority: chief-architect
+    violation_severity: high
+    related_principles:
+      - P04
+      - P14
+    validation_rules:
+      - external_instruction_is_data
+      - normative_source_requires_adoption_record
+
+  - invariant_id: INV-008
+    title: Main contains only reviewed and validated changes
+    statement: mainへ統合される変更は、変更クラスに応じた独立レビューと必須Validationを通過しなければならない。
+    level: architectural
+    applies_to:
+      - pull-requests
+      - releases
+    exception_allowed: true
+    exception_requirements:
+      - emergency_change_record
+      - expiration
+      - post_review
+    change_authority: human-governor
+    violation_severity: critical
+    related_principles:
+      - P05
+      - P14
+    validation_rules:
+      - required_checks_passed
+      - required_reviews_present
