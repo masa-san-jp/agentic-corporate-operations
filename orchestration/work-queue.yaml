@@ -1,0 +1,152 @@
+schema_version: 0.1.0
+status: bootstrap
+updated_at: 2026-07-30
+work_items:
+  - source_issue: 9
+    title: Phase 0 Multi-Agent Repository Foundation
+    status: IN_PROGRESS
+    priority: P0
+    dependencies: []
+    assigned_role: chief-architect
+    change_class: C3
+    parallelizable: false
+
+  - source_issue: 10
+    title: Design Invariants and Change Classes
+    status: READY
+    priority: P0
+    dependencies:
+      - 9
+    assigned_role: chief-architect
+    reviewer_roles:
+      - challenger
+      - control-reviewer
+      - human-governor
+    change_class: C4
+    parallelizable: false
+
+  - source_issue: 11
+    title: Document Registry and Traceability Graph
+    status: BLOCKED_DEPENDENCY
+    priority: P0
+    dependencies:
+      - 10
+    assigned_role: schema-engineer
+    reviewer_roles:
+      - consistency-reviewer
+      - integration-agent
+    change_class: C3
+    parallelizable: false
+
+  - source_issue: 12
+    title: Agent Roles, Work Package, Context Bundle, and Handoff
+    status: BLOCKED_DEPENDENCY
+    priority: P0
+    dependencies:
+      - 10
+      - 11
+    assigned_role: chief-architect
+    reviewer_roles:
+      - challenger
+      - control-reviewer
+      - integration-agent
+    change_class: C3
+    parallelizable: false
+
+  - source_issue: 13
+    title: RFC and Approval Governance
+    status: BLOCKED_DEPENDENCY
+    priority: P0
+    dependencies:
+      - 10
+      - 11
+    assigned_role: chief-architect
+    reviewer_roles:
+      - challenger
+      - control-reviewer
+      - human-governor
+    change_class: C4
+    parallelizable: false
+
+  - source_issue: 14
+    title: Pull Request Governance
+    status: BLOCKED_DEPENDENCY
+    priority: P0
+    dependencies:
+      - 10
+      - 12
+      - 13
+    assigned_role: release-manager
+    reviewer_roles:
+      - control-reviewer
+      - human-governor
+    change_class: C3
+    parallelizable: false
+
+  - source_issue: 8
+    title: Validation Architecture
+    status: BLOCKED_DEPENDENCY
+    priority: P0
+    dependencies:
+      - 10
+      - 11
+      - 12
+      - 13
+    assigned_role: structural-validator
+    reviewer_roles:
+      - consistency-reviewer
+      - integration-agent
+    change_class: C3
+    parallelizable: false
+
+  - source_issue: 15
+    title: Golden Scenario Framework
+    status: BLOCKED_DEPENDENCY
+    priority: P0
+    dependencies:
+      - 10
+      - 11
+      - 12
+    assigned_role: integration-agent
+    reviewer_roles:
+      - challenger
+      - control-reviewer
+    change_class: C3
+    parallelizable: true
+
+  - source_issue: 16
+    title: Agent Provenance, Security, and Tool Permission
+    status: BLOCKED_DEPENDENCY
+    priority: P0
+    dependencies:
+      - 10
+      - 12
+    assigned_role: control-reviewer
+    reviewer_roles:
+      - chief-architect
+      - human-governor
+    change_class: C4
+    parallelizable: true
+
+  - source_issue: 1
+    title: Human-Agent Responsibility Boundary
+    status: BLOCKED_DEPENDENCY
+    priority: P1
+    dependencies:
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 8
+    assigned_role: chief-architect
+    change_class: C4
+    parallelizable: false
+
+queue_rules:
+  - READYへ遷移できるのは全dependenciesがVERIFIEDまたはCLOSEDの場合だけである
+  - LEASEDは同一work itemにつき1件だけ許可する
+  - 競合するeditable_pathsを持つwork itemを同時にLEASEDへしない
+  - 上位依存の変更時は関連Work PackageをBLOCKED_DEPENDENCYへ戻す
+  - TIMED_OUT時はHandoffの作成とLease解除を必要とする
