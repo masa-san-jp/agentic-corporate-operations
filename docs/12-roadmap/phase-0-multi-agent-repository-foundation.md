@@ -2,7 +2,7 @@
 
 ```yaml
 document_id: ACO-ROADMAP-PHASE-000
-Title: Phase 0 Multi-Agent Repository Foundation
+title: Phase 0 Multi-Agent Repository Foundation
 status: draft
 version: 0.1.0
 owner: human-governor
@@ -191,7 +191,7 @@ Normative Specification Change
 | chief-architect | 全体整合性と上位設計の維持 | 単独で自分のC4変更を承認する |
 | task-curator | IssueをWork Packageへ変換する | 概念仕様を独自に確定する |
 | domain-author | 限定された成果物を作成する | 上位概念を無断変更する |
-| schema-engineer | Schema、Example、Testを作成する | 概念意味をSchema都合で変更する |
+| schema-engineer | Schema、Example、Testを作成する | 概念仕様をSchema都合で変更する |
 | consistency-reviewer | 用語、依存、重複を検査する | 好みだけで設計を変更する |
 | challenger | 前提と失敗モードを反証する | 代替案なしに否定だけを行う |
 | control-reviewer | 権限、統制、Evidenceを検査する | 実行者と同一主体で最終承認する |
