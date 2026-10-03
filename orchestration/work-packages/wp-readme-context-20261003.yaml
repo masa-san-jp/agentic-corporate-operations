@@ -1,0 +1,101 @@
+work_package_id: WP-README-CONTEXT-20261003
+source_issue: 18
+status: SELF_CHECKED
+change_class: C1
+base_commit: e25d0a84ae090a008b8eb89b728b3027845b932d
+objective: 既存の規範的意味を維持してREADMEの用例・歴史的背景・展開を明確化する。
+deliverables: &id001
+- README.md
+- registry/documents.yaml
+- orchestration/work-packages/wp-readme-context-20261003.yaml
+- orchestration/context-bundles/cb-readme-context-20261003.yaml
+- orchestration/runs/readme-context-20261003-author.md
+required_context:
+- orchestration/context-bundles/cb-readme-context-20261003.yaml
+applicable_invariants:
+- INV-001
+- INV-002
+- INV-005
+- INV-006
+- INV-007
+- INV-008
+related_adrs:
+- ADR-0001
+dependencies: []
+editable_paths: *id001
+read_only_paths:
+- .github/CODEOWNERS
+- .github/PULL_REQUEST_TEMPLATE.md
+- AGENTS.md
+- CONTRIBUTING.md
+- decisions/ADR-0001-adopt-phase-0-multi-agent-repository-governance.md
+- docs/00-overview/glossary.md
+- docs/00-overview/principles.md
+- docs/00-overview/scope.md
+- docs/00-overview/vision.md
+- docs/01-architecture/document-architecture.md
+- docs/10-templates/context-bundle.yaml
+- docs/10-templates/handoff.yaml
+- docs/10-templates/work-package.yaml
+- docs/12-roadmap/document-roadmap.md
+- docs/12-roadmap/phase-0-multi-agent-repository-foundation.md
+- docs/README.md
+- governance/approval-matrix.yaml
+- governance/change-classes.yaml
+- governance/invariants.yaml
+- governance/tool-permissions.yaml
+- orchestration/README.md
+- orchestration/agent-roles.yaml
+- orchestration/runs/README.md
+- orchestration/work-queue.yaml
+- registry/README.md
+- validation/README.md
+forbidden_paths:
+- governance/**
+- schemas/**
+- docs/**
+- .github/**
+- decisions/**
+- proposals/**
+- AGENTS.md
+- CONTRIBUTING.md
+- orchestration/agent-roles.yaml
+- orchestration/work-queue.yaml
+assigned_role: domain-author
+reviewer_roles:
+- consistency-reviewer
+tools_allowed:
+- read_repository
+- search_issues
+- create_branch
+- write_leased_paths
+- create_pull_request
+- run_local_validation
+external_access_allowed: false
+acceptance_criteria:
+- 元のREADME本文を保持し、説明のみ追記する。
+- 用例を非規範的な説明例と明示し、実装済み機能と誤認させない。
+- '歴史はPR #17とADR-0001、展開はPhase 0とCONTRIBUTINGへ対応付ける。'
+- READMEの6観点を既存本文と追記から確認できる。
+- Governanceのルール、Schema、Protocol、権限、設定、metadataを変更しない。
+- 別Agent Runのconsistency-reviewerが最終headを評価する。
+- release-managerが最新head、Context、実際のchecksと未解決会話を再確認して通常マージする。
+acceptance_tests:
+- 'syntax: Pandocで変更Markdownを解析し、PyYAMLで変更YAMLを解析する。'
+- 'structure: 編集範囲、Registry ID/path一意性、既存レコード不変、必須WP/Context項目、参照とDAGを検査する。'
+- 'terminology: Glossaryとの照合と独立Consistency Reviewを実施する。'
+- 'links: 変更Markdownの相対リンクがbase treeまたは追加成果物へ解決できることを検査する。'
+- 'context: 必読文書のblob SHAを固定base treeと照合し、merge直前にmainの更新を確認する。'
+max_iterations: 3
+timeout_at: '2026-10-03T23:59:59Z'
+lease:
+  holder_agent_run_id: readme-context-20261003-author
+  acquired_at: '2026-10-03T11:17:20Z'
+  expires_at: '2026-10-03T23:59:59Z'
+exception_policy:
+  retry_limit: 1
+  escalation_role: release-manager
+  escalation_deadline: '2026-10-03T23:59:59Z'
+  closure_condition: 範囲内修正と再検証で解消するか、停止理由・次の行動・必要なRole・再検証項目をIssue/PRへHandoffとして残しLeaseを解除する。
+handoff_required: true
+completion_authority: release-manager

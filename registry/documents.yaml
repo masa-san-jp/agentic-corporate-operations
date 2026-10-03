@@ -148,6 +148,25 @@ documents:
       - INV-008
     source_issue: 9
 
+  # Non-normative repository guide; this entry does not approve any specification.
+  - document_id: ACO-README-001
+    path: README.md
+    title: Agentic Corporate Operations repository guide
+    normative_level: L6
+    status: draft
+    version: 0.1.0
+    owner_role: domain-author
+    parent_documents: []
+    depends_on: []
+    applicable_invariants:
+    - INV-001
+    - INV-002
+    - INV-005
+    - INV-006
+    - INV-007
+    - INV-008
+    source_issue: 18
+
 registry_rules:
   document_id_unique: true
   path_unique: true

@@ -1,0 +1,152 @@
+context_bundle_id: CB-README-CONTEXT-20261003
+work_package_id: WP-README-CONTEXT-20261003
+base_commit: e25d0a84ae090a008b8eb89b728b3027845b932d
+generated_at: '2026-10-03T11:17:20Z'
+generated_by: readme-context-20261003-author
+required_documents:
+- document_id: null
+  path: .github/CODEOWNERS
+  version: unversioned-at-base
+  blob_sha: 31293746b4ec9acb220c5e6fe6154daf82b793dd
+- document_id: null
+  path: .github/PULL_REQUEST_TEMPLATE.md
+  version: unversioned-at-base
+  blob_sha: 0fe366e6493e20bca62dba667613f8b9e9ecabec
+- document_id: ACO-AGENT-INSTRUCTIONS-001
+  path: AGENTS.md
+  version: 0.2.0
+  blob_sha: 568b7ab44850ec054607cd53413668ae69f48a0d
+- document_id: null
+  path: CONTRIBUTING.md
+  version: unversioned-at-base
+  blob_sha: 80e1854bbf7a67afa1c70dc6812eed135e265f99
+- document_id: null
+  path: README.md
+  version: unversioned-at-base
+  blob_sha: dba85344ef7ed7f137b3d2e8523f0fa3f7b9e17f
+- document_id: null
+  path: decisions/ADR-0001-adopt-phase-0-multi-agent-repository-governance.md
+  version: unversioned-at-base
+  blob_sha: d067f074e9e6c51b0ff6fd3fd2bd06f763bc2ba5
+- document_id: ACO-CONST-GLOSSARY-001
+  path: docs/00-overview/glossary.md
+  version: 0.1.0
+  blob_sha: 4676210840f51a9d6ff3384c4e223700aad340f1
+- document_id: ACO-CONST-PRINCIPLES-001
+  path: docs/00-overview/principles.md
+  version: 0.1.0
+  blob_sha: 638b3f1f665c12e67af3b7e7da2674d180590acc
+- document_id: ACO-CONST-SCOPE-001
+  path: docs/00-overview/scope.md
+  version: 0.1.0
+  blob_sha: 344fcb3b056345578470580117b3d5b3345fcc9d
+- document_id: ACO-CONST-VISION-001
+  path: docs/00-overview/vision.md
+  version: 0.1.0
+  blob_sha: 7c018435deef80ea2bc0d767c15df1643b7d3d03
+- document_id: ACO-ARCH-DOC-001
+  path: docs/01-architecture/document-architecture.md
+  version: 0.2.0
+  blob_sha: 947fa7b5cf56ee995d864a4b8d5d7892ca1246b3
+- document_id: null
+  path: docs/10-templates/context-bundle.yaml
+  version: unversioned-at-base
+  blob_sha: 6356695918566cf8e0339acf7b265c352b3f5d9a
+- document_id: null
+  path: docs/10-templates/handoff.yaml
+  version: unversioned-at-base
+  blob_sha: c7ba930c4e62e346bd667703cecfd59558cc020c
+- document_id: null
+  path: docs/10-templates/work-package.yaml
+  version: unversioned-at-base
+  blob_sha: 82475e40a44376fd87484f87b983e596f8f7ab21
+- document_id: ACO-ROADMAP-001
+  path: docs/12-roadmap/document-roadmap.md
+  version: 0.2.0
+  blob_sha: 2886a6b409117c5a733f2c52678def82e11059af
+- document_id: ACO-ROADMAP-PHASE-000
+  path: docs/12-roadmap/phase-0-multi-agent-repository-foundation.md
+  version: 0.1.0
+  blob_sha: b7db78d5d61cc4dc0a8e35385a0ed66a49247bc0
+- document_id: null
+  path: docs/README.md
+  version: unversioned-at-base
+  blob_sha: 4af02b4051e115571e08d68c0cfc64145d77321d
+- document_id: null
+  path: governance/approval-matrix.yaml
+  version: unversioned-at-base
+  blob_sha: 9bdb9e6664ae6ff1f708de266f52e17ec5d970e6
+- document_id: null
+  path: governance/change-classes.yaml
+  version: unversioned-at-base
+  blob_sha: cdff3eadb968c022621e03fbde4798212b8c00ae
+- document_id: null
+  path: governance/invariants.yaml
+  version: unversioned-at-base
+  blob_sha: 986437e0bc1170c40abf0628b68b161fe869112f
+- document_id: null
+  path: governance/tool-permissions.yaml
+  version: unversioned-at-base
+  blob_sha: 9b053043d700db1b41a5b4b40a1a1e3a62db4829
+- document_id: null
+  path: orchestration/README.md
+  version: unversioned-at-base
+  blob_sha: 0eb693f598a6257264bf10522f8dee94bfd3d5a0
+- document_id: null
+  path: orchestration/agent-roles.yaml
+  version: unversioned-at-base
+  blob_sha: ce1868fb4934393c31cba61e2a3fce5c57861959
+- document_id: null
+  path: orchestration/runs/README.md
+  version: unversioned-at-base
+  blob_sha: 7ed6d64f427f94b876203e8f4e7187c9a64f00fb
+- document_id: null
+  path: orchestration/work-queue.yaml
+  version: unversioned-at-base
+  blob_sha: ea511ebce966d372fd8093f38eb5286bfc68ee4a
+- document_id: null
+  path: registry/README.md
+  version: unversioned-at-base
+  blob_sha: 341f31e09289fd9d0185af507890a6f23675c5f6
+- document_id: null
+  path: registry/documents.yaml
+  version: unversioned-at-base
+  blob_sha: adc02dac80756fa2f410e1cc763b7bfb92e371ee
+- document_id: null
+  path: validation/README.md
+  version: unversioned-at-base
+  blob_sha: f423c71a71f0037aa99f912facf4b8ebc4f0aefd
+applicable_invariants:
+- INV-001
+- INV-002
+- INV-005
+- INV-006
+- INV-007
+- INV-008
+applicable_change_class: C1
+applicable_adrs:
+- ADR-0001
+glossary_terms:
+- Work Object
+- Evidence
+- Protocol
+- Agent
+- ADR
+related_schemas: []
+known_conflicts: []
+open_questions:
+- C1の分類と、変更された運用記録がGovernance規則の変更を含まないことを独立レビューで確認する。
+prohibited_assumptions:
+- Phase 0を完了済みとしない。
+- 機能領域の一覧を実装済みの証拠としない。
+- 未実装のCIを成功と記録しない。
+- 同一Agent Runの自己検査を独立承認に数えない。
+source_materials:
+  normative: []
+  non_normative:
+  - https://github.com/masa-san-jp/agentic-corporate-operations/pull/17
+  - https://github.com/masa-san-jp/agentic-corporate-operations/issues/18
+staleness_policy:
+  invalidate_on_parent_change: true
+  invalidate_on_invariant_change: true
+  require_rebase_before_review: true
