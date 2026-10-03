@@ -84,3 +84,14 @@ AIエージェントは、業務の発見、構造化、計画、実行、検証
 - [Issue #9: Phase 0 umbrella](https://github.com/masa-san-jp/agentic-corporate-operations/issues/9)
 
 Phase 0の必須ゲートが完了するまで、共通モデルのIssue #1〜#7を複数エージェントへ無秩序に並列割当しません。
+
+
+## 用語としての用例
+
+「購買の依頼をWork Objectとして扱い、起案・承認・実行・検証を分離する」は、本リポジトリの設計原則を業務へ当てはめた説明例です。実装済みの自動購買機能を示すものではありません。用語の定義は [用語集](docs/00-overview/glossary.md) を正本とします。
+
+## 歴史的背景と展開
+
+[2026年7月30日のPR #17](https://github.com/masa-san-jp/agentic-corporate-operations/pull/17) で、Phase 0のマルチエージェント・ガバナンスを採用しました（[ADR-0001](decisions/ADR-0001-adopt-phase-0-multi-agent-repository-governance.md)）。複数エージェントによる仕様整備を始める前に、役割分離、Work Package、Context Bundle、独立レビュー、Validationの土台を構築する経緯です。
+
+展開の入口は [Phase 0ロードマップ](docs/12-roadmap/phase-0-multi-agent-repository-foundation.md) と [CONTRIBUTING.md](CONTRIBUTING.md) です。業務領域が文書構成に並ぶことを、その業務の実装・導入・自律運転が完了した証拠として扱いません。上位設計の採用と、各業務の実装・運用検証は別々に確認します。
